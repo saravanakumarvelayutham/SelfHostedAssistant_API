@@ -1,3 +1,7 @@
-Click the button below to set up the API on Heroku:
+# Self-Hosted Assistant on [Heroku](http://heroku.com)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/saravanakumarvelayutham/SelfHostedAssistant_API)
+Self-Hosted Assistant is a free, open, simple scheduling application.
+
+This repository holds the API needed for the Assistant 
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
