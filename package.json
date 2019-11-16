@@ -1,0 +1,11 @@
+{
+  "name": "SelfHostedAssistant_API",
+  "version": "0.0.1",
+  "private": true,
+  "description": "API for Self hosted assistant",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saravanakumarvelayutham/SelfHostedAssistant_API.git"
+  },
+  "proxy": "http://localhost:5000"
+}
