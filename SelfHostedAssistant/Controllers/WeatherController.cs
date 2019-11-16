@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 namespace SelfHostedAssistant.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class WeatherController : Controller
     {
         [HttpGet("CurrentWeather")]
