@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using MongoDB.Driver;
 using SelfHostedAssistant.Models;
 
@@ -12,13 +13,14 @@ namespace SelfHostedAssistant.Services
         {
             var mongo_uri = Environment.GetEnvironmentVariable("MONGODB_URI");
             Console.WriteLine(mongo_uri);
-            MongoClient client;
             if (string.IsNullOrEmpty(mongo_uri))
             {
-                client = new MongoClient(settings.ConnectionString);
+                mongo_uri = settings.ConnectionString;
             }
-            else client = new MongoClient(mongo_uri);
-            var database = client.GetDatabase(settings.DatabaseName);
+
+            var client = new MongoClient(mongo_uri);
+            var databaseName = mongo_uri.Split('/').Last();
+            var database = client.GetDatabase(databaseName);
             
             _events = database.GetCollection<Event>("Event");
         }
