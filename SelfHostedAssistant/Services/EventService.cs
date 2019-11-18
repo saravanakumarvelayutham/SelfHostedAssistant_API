@@ -11,6 +11,7 @@ namespace SelfHostedAssistant.Services
         public EventService(IAssistantDatabaseSettings settings)
         {
             var mongo_uri = Environment.GetEnvironmentVariable("MONGODB_URI");
+            Console.WriteLine(mongo_uri);
             MongoClient client;
             if (string.IsNullOrEmpty(mongo_uri))
             {
