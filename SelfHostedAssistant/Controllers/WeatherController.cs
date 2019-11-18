@@ -14,10 +14,10 @@ namespace SelfHostedAssistant.Controllers
     public class WeatherController : Controller
     {
         [HttpGet("CurrentWeather")]
-        public async Task<IActionResult> CurrentWeather(string lat, string lon)
+        public async Task<IActionResult> CurrentWeather(double lat, double lon)
         {
             var darkSky = new DarkSky.Services.DarkSkyService("770e26e6dcc0c7b7b76439d3ab7f9e98");
-            var forecast = await darkSky.GetForecast(42.915, -78.741);
+            var forecast = await darkSky.GetForecast(lat, lon);
             if (forecast?.IsSuccessStatus == true)
             {
                 return Ok(forecast.Response.Currently);
@@ -28,10 +28,10 @@ namespace SelfHostedAssistant.Controllers
 
         [Route("HourlyForecast")]
         [HttpGet]
-        public async Task<IActionResult> HourlyForecast(string lat, string lon)
+        public async Task<IActionResult> HourlyForecast(double lat, double lon)
         {
             var darkSky = new DarkSky.Services.DarkSkyService("770e26e6dcc0c7b7b76439d3ab7f9e98");
-            var forecast = await darkSky.GetForecast(42.915, -78.741);
+            var forecast = await darkSky.GetForecast(lat, lon);
             if (forecast?.IsSuccessStatus == true)
             {
                 return Ok(forecast.Response.Hourly);
