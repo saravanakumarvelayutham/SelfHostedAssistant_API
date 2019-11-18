@@ -3,6 +3,11 @@
   "description": "Self-Hosted scheduling Assistant API",
   "repository": "https://github.com/saravanakumarvelayutham/SelfHostedAssistant_API",
   "keywords": ["aspnet", "core"],
+  "addons": [
+   {
+     "plan": "mongolab",
+     "as": "MONGO"
+   }],
   "buildpacks": [
     {
         "url": "https://github.com/jincod/dotnetcore-buildpack"
