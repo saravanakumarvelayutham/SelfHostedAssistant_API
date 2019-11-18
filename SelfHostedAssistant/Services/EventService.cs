@@ -10,12 +10,15 @@ namespace SelfHostedAssistant.Services
         private readonly IMongoCollection<Event> _events;
         public EventService(IAssistantDatabaseSettings settings)
         {
-            var client = new MongoClient(settings.ConnectionString);
+            var mongo_uri = Environment.GetEnvironmentVariable("MONGODB_URI");
+            MongoClient client;
+            if (string.IsNullOrEmpty(mongo_uri))
+            {
+                client = new MongoClient(settings.ConnectionString);
+            }
+            else client = new MongoClient(mongo_uri);
             var database = client.GetDatabase(settings.DatabaseName);
-
-            //var client = new MongoClient(Environment.GetEnvironmentVariable("AssistantFullUrl"));
-           // var database = client.GetDatabase(Environment.GetEnvironmentVariable("AssistantDB"));
-
+            
             _events = database.GetCollection<Event>("Event");
         }
 

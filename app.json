@@ -6,7 +6,7 @@
   "addons": [
    {
      "plan": "mongolab",
-     "as": "MONGO"
+     "as": "MONGODB_URI"
    }],
   "buildpacks": [
     {
