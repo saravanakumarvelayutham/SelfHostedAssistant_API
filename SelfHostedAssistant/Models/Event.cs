@@ -8,15 +8,12 @@ namespace SelfHostedAssistant.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string id { get; set; }
 
         [BsonElement]
-        public string Title { get; set; }
+        public string title { get; set; }
 
         [BsonElement]
-        public DateTimeOffset start { get; set; }
-
-        [BsonElement]
-        public DateTimeOffset end { get; set; }
+        public string rrule { get; set; }
     }
 }

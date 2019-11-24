@@ -17,19 +17,17 @@ namespace SelfHostedAssistant.Services
             {
                 mongo_uri = settings.ConnectionString;
             }
-
-            var client = new MongoClient(mongo_uri);
+            var client = new MongoClient(mongo_uri + "?retryWrites=false");
             var databaseName = mongo_uri.Split('/').Last();
             var database = client.GetDatabase(databaseName);
             
             _events = database.GetCollection<Event>("Event");
         }
 
-        public List<Event> Get() =>
-          _events.Find(@event => true).ToList();
+        public List<Event> Get() => _events.Find(@event => true).ToList();
 
         public Event Get(string id) =>
-            _events.Find<Event>(@event => @event.Id == id).FirstOrDefault();
+            _events.Find<Event>(@event => @event.id == id).FirstOrDefault();
 
         public Event Create(Event @event)
         {
@@ -38,12 +36,12 @@ namespace SelfHostedAssistant.Services
         }
 
         public void Update(string id, Event eventIn) =>
-            _events.ReplaceOne(@event => @event.Id == id, eventIn);
+            _events.ReplaceOne(@event => @event.id == id, eventIn);
 
         public void Remove(Event eventIn) =>
-            _events.DeleteOne(@event => @event.Id == eventIn.Id);
+            _events.DeleteOne(@event => @event.id == eventIn.id);
 
         public void Remove(string id) =>
-            _events.DeleteOne(@event => @event.Id == id);
+            _events.DeleteOne(@event => @event.id == id);
     }
 }

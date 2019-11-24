@@ -40,15 +40,15 @@ namespace SelfHostedAssistant.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Event> Create(Event @event)
+        public ActionResult<Event> Create([FromBody]Event @event)
         {
             _eventService.Create(@event);
 
-            return CreatedAtRoute("GetEvent", new { id = @event.Id.ToString() }, @event);
+            return CreatedAtRoute("GetEvent", new { id = @event.id.ToString() }, @event);
         }
 
         [HttpPut("{id:length(24)}")]
-        public IActionResult Update(string id, Event eventIn)
+        public IActionResult Update(string id, [FromBody]Event eventIn)
         {
             var @event = _eventService.Get(id);
 
@@ -72,7 +72,7 @@ namespace SelfHostedAssistant.Controllers
                 return NotFound();
             }
 
-            _eventService.Remove(@event.Id);
+            _eventService.Remove(@event.id);
 
             return NoContent();
         }
