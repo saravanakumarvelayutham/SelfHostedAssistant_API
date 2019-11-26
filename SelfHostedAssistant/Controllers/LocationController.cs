@@ -10,8 +10,8 @@ namespace SelfHostedAssistant.Controllers
     [Route("api/[controller]")]
     public class LocationController : Controller
     {
-        [HttpGet]
-        public IActionResult Get(double lat, double lon)
+        [HttpPost]
+        public IActionResult Post(double lat, double lon)
         {
             try
             {
@@ -24,7 +24,24 @@ namespace SelfHostedAssistant.Controllers
             }
             catch
             {
-                return BadRequest("Updateing Location paramters");
+                return BadRequest("Error in updating Location paramters");
+
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                lock (Location._locker)
+                {
+                    return Ok(new EventLocation() { latitude = Location.Latitude, longitude = Location.Longitude });
+                }
+            }
+            catch
+            {
+                return BadRequest("Error getting Location");
 
             }
         }

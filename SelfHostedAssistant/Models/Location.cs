@@ -8,7 +8,7 @@ namespace SelfHostedAssistant.Models
     internal static class Location
     {
         internal static readonly object _locker = new object();
-        internal static double Latitude { get; set; }
-        internal static double Longitude { get; set; }
+        internal static double? Latitude { get; set; }
+        internal static double? Longitude { get; set; }
     }
 }

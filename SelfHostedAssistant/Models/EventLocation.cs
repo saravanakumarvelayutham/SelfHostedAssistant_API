@@ -7,8 +7,10 @@ namespace SelfHostedAssistant.Models
 {
     public class EventLocation
     {
-        public double latitude { get; set; }
+        public double? latitude { get; set; }
 
-        public double longitude { get; set; }
+        public double? longitude { get; set; }
+
+        public string address { get; set; }
     }
 }

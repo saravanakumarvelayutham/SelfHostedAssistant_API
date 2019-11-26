@@ -24,17 +24,17 @@ namespace SelfHostedAssistant.Controllers
             var nextEvent = eventList.Where(x => currentDate < x.endDate).FirstOrDefault();
             if(nextEvent != null)
             {
-                var eventSummary = new EventSummary { NextEvent = nextEvent, Summary = "Summary goes here" };
+                var eventSummary = new EventSummary { nextEvent = nextEvent, summary = "Summary goes here" };
                 return Ok(eventSummary);
             }
-            return Ok(new EventSummary() { NextEvent = new Event(), Summary = "No events next" });
+            return Ok(new EventSummary() { nextEvent = new Event(), summary = "No events next" });
         }
     }
 
     public class EventSummary
     {
-        public Event NextEvent { get; set; }
+        public Event nextEvent { get; set; }
 
-        public string Summary { get; set; }
+        public string summary { get; set; }
     }
 }
