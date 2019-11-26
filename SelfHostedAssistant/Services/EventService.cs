@@ -6,7 +6,7 @@ using SelfHostedAssistant.Models;
 
 namespace SelfHostedAssistant.Services
 {
-    public class EventService
+    public class EventService : IEventService
     {
         private readonly IMongoCollection<Event> _events;
         public EventService(IAssistantDatabaseSettings settings)
@@ -20,7 +20,7 @@ namespace SelfHostedAssistant.Services
             var client = new MongoClient(mongo_uri + "?retryWrites=false");
             var databaseName = mongo_uri.Split('/').Last();
             var database = client.GetDatabase(databaseName);
-            
+
             _events = database.GetCollection<Event>("Event");
         }
 

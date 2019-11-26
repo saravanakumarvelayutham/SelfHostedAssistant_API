@@ -15,5 +15,18 @@ namespace SelfHostedAssistant.Models
 
         [BsonElement]
         public string rrule { get; set; }
+
+        [BsonElement]
+        public string color { get; set; }
+        
+        [BsonElement]
+        public DateTimeOffset startDate { get; set; }
+
+
+        [BsonElement]
+        public DateTimeOffset endDate { get; set; }
+
+        [BsonElement]
+        public EventLocation location { get; set; }
     }
 }

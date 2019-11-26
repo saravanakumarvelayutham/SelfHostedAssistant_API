@@ -77,4 +77,10 @@ namespace SelfHostedAssistant.Controllers
             return NoContent();
         }
     }
+
+    public class DateFilter
+    {
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+    }
 }

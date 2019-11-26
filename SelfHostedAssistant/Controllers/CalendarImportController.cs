@@ -13,7 +13,14 @@ namespace SelfHostedAssistant.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]CalendarFile calendarFile)
         {
-            return Ok(calendarFile);
+            try
+            {
+                return Ok(calendarFile);
+            }
+            catch
+            {
+                return BadRequest("Calendar Import failed");
+            }
         }
     }
 }
