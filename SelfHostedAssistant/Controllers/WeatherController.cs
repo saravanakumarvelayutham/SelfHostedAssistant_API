@@ -25,6 +25,21 @@ namespace SelfHostedAssistant.Controllers
             return BadRequest($"Error getting weather");
         }
 
+        [HttpGet("GetWeather")]
+        public async Task<IActionResult> GetWeather(double lat, double lon, double unixTimeStamp)
+        {
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+
+            var darkSky = new DarkSky.Services.DarkSkyService("770e26e6dcc0c7b7b76439d3ab7f9e98");
+            var forecast = await darkSky.GetForecast(lat, lon, new DarkSky.Models.OptionalParameters { ForecastDateTime = dtDateTime });
+            if (forecast?.IsSuccessStatus == true)
+            {
+                return Ok(forecast.Response.Currently);
+            }
+            return BadRequest($"Error getting weather");
+        }
+
 
         [Route("HourlyForecast")]
         [HttpGet]
