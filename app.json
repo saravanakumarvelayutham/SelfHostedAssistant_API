@@ -2,6 +2,13 @@
   "name": "Self-Assistant",
   "description": "Self-Hosted scheduling Assistant API",
   "repository": "https://github.com/saravanakumarvelayutham/SelfHostedAssistant_API",
+  "env": {
+    "API_URL": {
+     "MAP_API_KEY": {
+      "description": "Provide the API key for google maps platform",
+      "value" : ""
+    }
+  }
   "keywords": ["aspnet", "core"],
   "addons": [
    {
