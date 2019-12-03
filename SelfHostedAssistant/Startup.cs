@@ -29,6 +29,7 @@ namespace SelfHostedAssistant
             services.AddSingleton<IAssistantDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<AssistantDatabaseSettings>>().Value);
             services.AddSingleton<EventService>();
+            services.AddSingleton<GoogleService>();
             BsonSerializer.RegisterSerializer(DateTimeSerializer.LocalInstance);
             services.AddCors();
             services.AddControllers().AddNewtonsoftJson();
